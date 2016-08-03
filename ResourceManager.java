@@ -1,3 +1,4 @@
+package com.apps.crashpenguin.utilidades;
 
 import java.util.Locale;
 
@@ -16,10 +17,26 @@ import com.badlogic.gdx.utils.I18NBundle;
 public class ResourceManager {
 	public static AssetManager manager = new AssetManager();
 	public static String ATLAS_ELEMENTOS;
+	public static String ATLAS_SKIN;
+	public static String ATLAS_DERRAPE;
+	public static String ATLAS_CUERPO;
+	public static String ATLAS_PARTES;
+	public static String ATLAS_DEDO;
+	public static String ATLAS_STARS;
 	public static String FONDO_CONFIG;
 	public static String TEXTURE_HIELO;
+	public static String TEXTURE_HIELO2;
+	public static String TEXTURE_NIEVE;
+	public static String TEXTURE_NIEVE2;
+	public static String TEXTURE_NUBES;
+	public static String TEXTURE_NUBES2;
+	public static String TEXTURE_PISO;
 	public static BitmapFont FONTSMALL;
+	public static BitmapFont FONTMEDIUM;
+	public static BitmapFont FONTBIG;
+	public static BitmapFont FONTBIGGER;
 	public static String MUSIC_INTRO;
+	public static String MUSIC_INTRO_B;
 	public static FileHandle ENGLISH_FH;
 	public static FileHandle ESPANOL_FH;
 	public static FileHandle ITALIANO_FH;
@@ -27,7 +44,6 @@ public class ResourceManager {
 	public static FileHandle ALEMAN_FH;
 	public static FileHandle PORTUGUES_FH;
 
-  //Archivos con los lenguajes
 	private static Locale locale_en;
 	private static Locale locale_es;
 	private static Locale locale_it;
@@ -35,9 +51,8 @@ public class ResourceManager {
 	private static Locale locale_gr;
 	private static Locale locale_pt;
 
-  //Lenguajes
-  public static I18NBundle myBundleEnglish;
-	public static I18NBundle myBundleEspaÃ±ol;
+	public static I18NBundle myBundleEnglish;
+	public static I18NBundle myBundleEspañol;
 	public static I18NBundle myBundleItaliano;
 	public static I18NBundle myBundleFrances;
 	public static I18NBundle myBundleAleman;
@@ -46,7 +61,6 @@ public class ResourceManager {
 
 	public static Preferences preferences;
 
-  //Para cargar la fuente
 	private static FreeTypeFontGenerator generator;
 	private static Boolean fontsLoaded = false;
 	private static Boolean bundlesLoaded = false;
@@ -54,15 +68,40 @@ public class ResourceManager {
 
 	public static void load() {
 		ATLAS_ELEMENTOS = "atlas/elementos.atlas";
+		ATLAS_SKIN = "atlas/skin.atlas";
+		ATLAS_STARS = "atlas/stars.atlas";
+		ATLAS_DERRAPE = "atlas/derrape.atlas";
+		ATLAS_CUERPO = "atlas/cuerpo.atlas";
+		ATLAS_PARTES = "atlas/partes.atlas";
+		ATLAS_DEDO = "atlas/dedo.atlas";
 		FONDO_CONFIG = "fondoConfig.jpg";
 		TEXTURE_HIELO = "hielo01.png";
+		TEXTURE_HIELO2 = "hielo02.png";
+		TEXTURE_NIEVE = "nieve01.png";
+		TEXTURE_NIEVE2 = "nieve02.png";
+		TEXTURE_NUBES = "nubes01.png";
+		TEXTURE_NUBES2 = "nubes02.png";
+		TEXTURE_PISO = "piso01.png";
 		MUSIC_INTRO = "sounds/sndMusic.ogg";
+		MUSIC_INTRO_B = "sounds/sndMusic.ogg";
 		
 		manager.load(ATLAS_ELEMENTOS, TextureAtlas.class);
-	  manager.load(FONDO_CONFIG, Texture.class);
+		manager.load(ATLAS_SKIN, TextureAtlas.class);
+		manager.load(ATLAS_DERRAPE, TextureAtlas.class);
+		manager.load(ATLAS_CUERPO, TextureAtlas.class);
+		manager.load(ATLAS_PARTES, TextureAtlas.class);
+		manager.load(ATLAS_DEDO, TextureAtlas.class);
+		manager.load(ATLAS_STARS, TextureAtlas.class);
+		manager.load(FONDO_CONFIG, Texture.class);
 		manager.load(TEXTURE_HIELO, Texture.class);
+		manager.load(TEXTURE_HIELO2, Texture.class);
+		manager.load(TEXTURE_NIEVE, Texture.class);
+		manager.load(TEXTURE_NIEVE2, Texture.class);
+		manager.load(TEXTURE_NUBES, Texture.class);
+		manager.load(TEXTURE_NUBES2, Texture.class);
+		manager.load(TEXTURE_PISO, Texture.class);
 		manager.load(MUSIC_INTRO, Music.class);
-		
+		manager.load(MUSIC_INTRO_B, Music.class);
 	
 		if (fontsLoaded == false) {
 			loadFonts();
@@ -113,13 +152,13 @@ public class ResourceManager {
 		locale_pt = new Locale("pt");
 
 		myBundleEnglish = I18NBundle.createBundle(ENGLISH_FH, locale_en);
-		myBundleEspaÃ±ol = I18NBundle.createBundle(ESPANOL_FH, locale_es);
+		myBundleEspañol = I18NBundle.createBundle(ESPANOL_FH, locale_es);
 		myBundleItaliano = I18NBundle.createBundle(ITALIANO_FH, locale_it);
 		myBundleFrances = I18NBundle.createBundle(FRANCES_FH, locale_fr);
 		myBundleAleman = I18NBundle.createBundle(ALEMAN_FH, locale_gr);
 		myBundlePortugues = I18NBundle.createBundle(PORTUGUES_FH, locale_pt);
 
-	
+		// selectedBundle = myBundleEnglish;
 		bundlesLoaded = true;
 	}
 
@@ -152,7 +191,7 @@ public class ResourceManager {
 			preferences.putFloat("Y", 770);
 			preferences.flush();
 		} else if (myBundle.equals("Espanol")) {
-			selectedBundle = myBundleEspaÃ±ol;
+			selectedBundle = myBundleEspañol;
 			preferences.putString("language", "Espanol");
 			preferences.putFloat("Y", 635);
 			preferences.flush();
